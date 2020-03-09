@@ -18,16 +18,15 @@ const MOTDS = [
 const MOTD = MOTDS[(new Date().getDay()-1)];
 
 client.on('ready', async () => {
-  client.guilds.cache.array().forEach(async guild =>
-    {
-      console.log(MOTD);
+  const responses = client.guilds.cache.array().map(async guild => {
+    try {
       const files = await textToOverlay('./resources/MicrosoftTeams-image.png', MOTD);
-      await guild.systemChannel.send({files: [files]});
-  });
+      await guild.systemChannel.send('@everyone', {files: [files]});
+    } catch (e) {
+    await guild.systemChannel.send('Today is a bad day.');
+  }});
+  await Promise.all(responses);
   client.destroy();
 });
 
-(async () => {
-  console.log(process.env.CLIENT_TOKEN);
-  await client.login(process.env.CLIENT_TOKEN);
-})()
+client.login(process.env.CLIENT_TOKEN);
