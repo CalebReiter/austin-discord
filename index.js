@@ -10,8 +10,9 @@ const client = new Discord.Client();
 const MOTDS = [
   'I hate Mondays.',
   'Taco Tuesday. Let\'s go to Chick-fil-a.',
+  'Creepy Uncle Austin says: "Hi Kids"',
   'I don\'t know.',
-  'Are you a male?',
+  // 'Are you a male?',
   'Don\'t forget to do your timecards.'
 ]
 
