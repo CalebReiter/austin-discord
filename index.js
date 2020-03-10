@@ -21,7 +21,7 @@ client.on('ready', async () => {
   const responses = client.guilds.cache.array().map(async guild => {
     try {
       const files = await textToOverlay('./resources/MicrosoftTeams-image.png', MOTD);
-      await guild.systemChannel.send('@everyone', {files: [files]});
+      await guild.systemChannel.send({files: [files]});
     } catch (e) {
     await guild.systemChannel.send('Today is a bad day.');
   }});
